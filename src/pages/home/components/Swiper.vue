@@ -43,7 +43,7 @@ export default {
         height: 0
         overflow: hidden
         // 当图片还没加载时 防止出现文字抖动现象
-        padding-bottom: 40.7%
+        padding-bottom: 37.7%
         .swiper-img
             width: 100%
             background-color: #eee
