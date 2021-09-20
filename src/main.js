@@ -11,6 +11,7 @@ import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'swiper/css/swiper.css'
 fastclick.attach(document.body) // 解决移动端点击300ms延迟问题
 Vue.config.productionTip = false
+Vue.use(VueAwesomeSwiper)
 
 /* eslint-disable no-new */
 new Vue({
@@ -19,5 +20,4 @@ new Vue({
   components: { App },
   template: '<App/>'
 })
-Vue.use(VueAwesomeSwiper)
 // 路由就是根据网址的不同，返回不同的内容给用户
