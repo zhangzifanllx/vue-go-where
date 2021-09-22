@@ -1,6 +1,6 @@
 <template>
   <div class="swiper">
-      <swiper :options="swiperOption" :not-next-tick="notNextTick" ref="mySwiper">
+      <swiper :options="swiperOption" v-if="swiperList.length">
     <!-- slides -->
     <swiper-slide v-for="item in swiperList" :key='item.id'>
         <img class="swiper-img" :src="item.imgUrl" alt="">
