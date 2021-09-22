@@ -6,14 +6,20 @@
       <div class="header-center">
           <span class="iconfont">&#xe67d;</span>
           输入城市/景点/游玩主题</div>
-      <div class="header-right">城市
+      <div class="header-right">{{city}}
           <span class="iconfont right-icon">&#xe688;</span>
           </div>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  props: {
+    city: {
+      type: String
+    }
+  }
+}
 </script>
 
 <style scoped lang="stylus">

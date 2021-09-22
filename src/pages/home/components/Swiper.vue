@@ -2,7 +2,7 @@
   <div class="swiper">
       <swiper :options="swiperOption" :not-next-tick="notNextTick" ref="mySwiper">
     <!-- slides -->
-    <swiper-slide v-for="item in list" :key='item.id'>
+    <swiper-slide v-for="item in swiperList" :key='item.id'>
         <img class="swiper-img" :src="item.imgUrl" alt="">
         </swiper-slide>
     <!-- Optional controls -->
@@ -14,6 +14,14 @@
 <script>
 export default {
   name: 'HomeSwiper',
+  props: {
+    swiperList: {
+      type: Array,
+      default () {
+        return []
+      }
+    }
+  },
   data () {
     return {
       notNextTick: true,
@@ -22,14 +30,7 @@ export default {
         pagination: '.swiper-pagination',
         // 是否循环轮播
         loop: true
-      },
-      list: [{
-        id: '0001',
-        imgUrl: 'https://imgs.qunarzz.com/sight/source/1505/94/23202a6a5864d8.jpg_r_640x214_92f21625.jpg'
-      }, {
-        id: '0002',
-        imgUrl: 'https://imgs.qunarzz.com/sight/source/1511/fd/0285e145e82233.jpg_r_640x214_b5f10121.jpg'
-      }]
+      }
     }
   }
 }
@@ -43,7 +44,7 @@ export default {
         height: 0
         overflow: hidden
         // 当图片还没加载时 防止出现文字抖动现象
-        padding-bottom: 37.7%
+        padding-bottom: 31.8%
         .swiper-img
             width: 100%
             background-color: #eee
