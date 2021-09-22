@@ -2,7 +2,7 @@
   <div class='icons'>
     <!-- 使用滑动组件来滑动图标菜单 -->
     <swiper >
-      <swiper-slide v-for="item in totalPages" :key="item" >
+      <swiper-slide v-for="(item, index) in totalPages" :key="index" >
         <div class='icon-item' v-for="sub in item" :key="sub.id">
           <img
             :src='sub.imgUrl'
