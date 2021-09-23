@@ -2,7 +2,7 @@
   <div>
       <city-header></city-header>
       <city-search></city-search>
-      <city-list :cities="cities" :hotCities="hotCities"></city-list>
+      <city-list :cities="cities" :hotCities="hotCities" :currentCity="currentCity"></city-list>
       <city-alpha></city-alpha>
   </div>
 </template>
@@ -21,12 +21,15 @@ export default {
   data () {
     return {
       cities: {},
-      hotCities: []
+      hotCities: [],
+      currentCity: ''
     }
   },
   mounted () {
     cityData()
       .then(res => {
+        console.log(res)
+        this.currentCity = res.data.currentCity
         this.cities = res.data.cities
         this.hotCities = res.data.hotCities
       })

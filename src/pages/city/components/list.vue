@@ -4,18 +4,18 @@
       <div class="current-city">
       <div class="title">当前城市</div>
       <div class="item-wrapper">
-        <div class="item">{{hotCities[0].name}}</div>
+        <div class="item">{{currentCity}}</div>
       </div>
     </div>
     <div class="hot-city">
       <div class="title">热门城市</div>
-      <div class="item-wrapper" v-for="(item, index) in hotCities" :key="index">
+      <div class="item-wrapper" v-for="item in hotCities" :key="item.id">
         <div class="item">{{item.name}}</div>
       </div>
     </div>
-    <div class="order-city" v-for="(item, key) in cities" :key="key">
+    <div class="order-city" v-for="(value, key) in cities" :key="key">
       <div class="title">{{key}}</div>
-      <div class="citys border-bottom" v-for="sub in item" :key="sub.id">{{sub.name}}</div>
+      <div class="citys border-bottom" v-for="sub in value" :key="sub.id">{{sub['name']}}</div>
     </div>
     </div>
   </div>
@@ -27,21 +27,24 @@ export default {
   name: 'CityList',
   props: {
     cities: {
-      type: Object,
-      default () {
-        return {}
-      }
+      type: Object
     },
     hotCities: {
-      type: Array,
-      default () {
-        return []
-      }
+      type: Array
+    },
+    currentCity: {
+      type: String
     }
   },
   mounted () {
-    let scroll = new BScroll(this.$refs.wrapper)
+    let scroll = new BScroll(this.$refs.wrapper, {
+      scrollY: true,
+      click: false
+    })
     console.log(scroll)
+    scroll.on('scroll', (position) => {
+      console.log(position.Y)
+    })
   }
 }
 </script>
