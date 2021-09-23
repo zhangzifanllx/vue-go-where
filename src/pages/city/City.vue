@@ -2,8 +2,8 @@
   <div>
       <city-header></city-header>
       <city-search></city-search>
-      <city-list :cities="cities" :hotCities="hotCities" :currentCity="currentCity"></city-list>
-      <city-alpha></city-alpha>
+      <city-list :cities="cities" :hotCities="hotCities" :currentCity="currentCity" :alpha="alpha"></city-list>
+      <city-alpha :cities="cities" @change="changeAlpha"></city-alpha>
   </div>
 </template>
 
@@ -22,7 +22,8 @@ export default {
     return {
       cities: {},
       hotCities: [],
-      currentCity: ''
+      currentCity: '',
+      alpha: ''
     }
   },
   mounted () {
@@ -33,6 +34,11 @@ export default {
         this.cities = res.data.cities
         this.hotCities = res.data.hotCities
       })
+  },
+  methods: {
+    changeAlpha (alpha) {
+      this.alpha = alpha
+    }
   }
 }
 </script>

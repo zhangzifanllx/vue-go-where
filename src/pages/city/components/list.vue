@@ -13,7 +13,7 @@
         <div class="item">{{item.name}}</div>
       </div>
     </div>
-    <div class="order-city" v-for="(value, key) in cities" :key="key">
+    <div class="order-city" v-for="(value, key) in cities" :key="key" :ref="key">
       <div class="title">{{key}}</div>
       <div class="citys border-bottom" v-for="sub in value" :key="sub.id">{{sub['name']}}</div>
     </div>
@@ -34,17 +34,25 @@ export default {
     },
     currentCity: {
       type: String
+    },
+    alpha: {
+      type: String
     }
   },
   mounted () {
-    let scroll = new BScroll(this.$refs.wrapper, {
+    this.scroll = new BScroll(this.$refs.wrapper, {
       scrollY: true,
       click: false
     })
-    console.log(scroll)
-    scroll.on('scroll', (position) => {
+    this.scroll.on('scroll', (position) => {
       console.log(position.Y)
     })
+  },
+  watch: {
+    alpha (newValue) {
+      console.log(newValue)
+      this.scroll.scrollToElement(this.$refs[newValue][0])
+    }
   }
 }
 </script>
