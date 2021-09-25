@@ -4,7 +4,7 @@
       <div class="current-city">
       <div class="title">当前城市</div>
       <div class="item-wrapper">
-        <div class="item">{{currentCity}}</div>
+        <div class="item">北京</div>
       </div>
     </div>
     <div class="hot-city">
@@ -31,9 +31,6 @@ export default {
     },
     hotCities: {
       type: Array
-    },
-    currentCity: {
-      type: String
     },
     alpha: {
       type: String

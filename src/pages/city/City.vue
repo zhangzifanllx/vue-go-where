@@ -2,7 +2,7 @@
   <div>
       <city-header></city-header>
       <city-search :cities="cities"></city-search>
-      <city-list :cities="cities" :hotCities="hotCities" :currentCity="currentCity" :alpha="alpha"></city-list>
+      <city-list :cities="cities" :hotCities="hotCities" :alpha="alpha"></city-list>
       <city-alpha :cities="cities" @change="changeAlpha"></city-alpha>
   </div>
 </template>
@@ -22,7 +22,6 @@ export default {
     return {
       cities: {},
       hotCities: [],
-      currentCity: '',
       alpha: ''
     }
   },
@@ -30,7 +29,6 @@ export default {
     cityData()
       .then(res => {
         console.log(res)
-        this.currentCity = res.data.currentCity
         this.cities = res.data.cities
         this.hotCities = res.data.hotCities
       })
