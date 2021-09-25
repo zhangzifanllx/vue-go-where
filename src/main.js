@@ -9,6 +9,7 @@ import fastclick from 'fastclick'
 import 'styles/iconfont.css'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import 'swiper/css/swiper.css'
+import store from '@/store/index.js'
 fastclick.attach(document.body) // 解决移动端点击300ms延迟问题
 Vue.config.productionTip = false
 Vue.use(VueAwesomeSwiper)
@@ -17,6 +18,7 @@ Vue.use(VueAwesomeSwiper)
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })

@@ -5,7 +5,7 @@
   </div>
   <div class="search-content" ref="search" v-show="hasKeyWord">
       <ul>
-        <li class="search-item border-bottom" v-for="item in list" :key="item.id">{{item.name}}</li>
+        <li class="search-item border-bottom" v-for="item in list" :key="item.id" @click="handleCitySelect(item.name)">{{item.name}}</li>
         <!-- 如果没有搜索到任何城市就显示该选项 -->
         <li class="search-item border-bottom" v-show="hasList">未搜索到任何有关城市</li>
       </ul>
@@ -15,6 +15,7 @@
 
 <script>
 import Bscroll from 'better-scroll'
+import { mapMutations } from 'vuex'
 export default {
   name: 'CitySearch',
   props: {
@@ -29,18 +30,25 @@ export default {
       timer: null
     }
   },
+  methods: {
+    handleCitySelect (city) {
+      this.changeCity(city)
+      this.$router.push('/')
+    },
+    ...mapMutations(['changeCity'])
+  },
   watch: {
     keyword () {
       // 节流
       if (this.timer) {
         clearTimeout(this.timer)
-        console.log(this.timer)
+        // console.log(this.timer)
       }
       // keyword为空，清空显示列表的数据
       if (!this.keyword) {
         this.list = []
       }
-      console.log(123)
+      // console.log(123)
       // 遍历拿到符合条件的城市
       this.timer = setTimeout(() => {
         let result = []
@@ -57,7 +65,9 @@ export default {
     }
   },
   mounted () {
-    this.scroll = new Bscroll(this.$refs.search)
+    this.scroll = new Bscroll(this.$refs.search, {
+      click: true
+    })
   },
   computed: {
     hasKeyWord () {
