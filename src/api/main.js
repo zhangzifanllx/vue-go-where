@@ -1,8 +1,8 @@
 import { request } from './http'
 
-export function getMainAllData () {
+export function getMainAllData (city) {
   return request({
-    url: '/index.json',
+    url: `/index.json?city=${city}`,
     method: 'GET'
   })
 }
