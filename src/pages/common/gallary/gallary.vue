@@ -20,8 +20,7 @@ export default {
     imgList: {
       type: Array,
       default () {
-        return ['https://img1.qunarzz.com/sight/p0/1410/4d/c5eac3630e9ba35a2909a86a3530e5e1.water.jpg_r_800x800_acf5a0dd.jpg',
-          'https://img1.qunarzz.com/sight/p0/201403/07/8c9a75c5ef11015c56b8072795016b97.jpg_r_800x800_adca95b7.jpg']
+        return []
       }
     }
   },
