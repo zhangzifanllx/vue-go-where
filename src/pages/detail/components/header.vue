@@ -29,7 +29,7 @@ export default {
       if (top > 40) {
         this.showHeader = true
         this.slowShowHeader.opacity = top / 160 > 1 ? 1 : top / 160
-        // console.log(top)
+        console.log(top)
       } else {
         this.showHeader = false
       }
@@ -38,6 +38,9 @@ export default {
   mounted () {
     // 监听屏幕的滚动
     window.addEventListener('scroll', this.scrollContent)
+  },
+  deactivated () {
+    window.removeEventListener('scroll', this.scrollContent)
   }
 }
 </script>
