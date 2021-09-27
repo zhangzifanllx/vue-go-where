@@ -29,16 +29,16 @@ export default {
       if (top > 40) {
         this.showHeader = true
         this.slowShowHeader.opacity = top / 160 > 1 ? 1 : top / 160
-        console.log(top)
       } else {
         this.showHeader = false
       }
     }
   },
-  mounted () {
+  activated () {
     // 监听屏幕的滚动
     window.addEventListener('scroll', this.scrollContent)
   },
+  // 解绑全局事件，防止影响其他组件
   deactivated () {
     window.removeEventListener('scroll', this.scrollContent)
   }

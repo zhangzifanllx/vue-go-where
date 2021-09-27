@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 2823819 */
-  src: url('./iconfont/iconfont.woff2?t=1632636959570') format('woff2'),
-       url('./iconfont/iconfont.woff?t=1632636959570') format('woff'),
-       url('./iconfont/iconfont.ttf?t=1632636959570') format('truetype');
+  src: url('./iconfont/iconfont.woff2?t=1632731622069') format('woff2'),
+       url('./iconfont/iconfont.woff?t=1632731622069') format('woff'),
+       url('./iconfont/iconfont.ttf?t=1632731622069') format('truetype');
 }
 
 .iconfont {
@@ -11,6 +11,10 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icontubiaozhizuomoban-:before {
+  content: "\e605";
 }
 
 .icontupian:before {
