@@ -1,8 +1,8 @@
 <template>
   <div>
-      <detail-banner></detail-banner>
+      <detail-banner :list="gallaryImgs"></detail-banner>
       <detail-list :list="detailList"></detail-list>
-      <detail-header></detail-header>
+      <detail-header :name="sightName"></detail-header>
   </div>
 </template>
 
@@ -10,6 +10,7 @@
 import DetailBanner from './components/banner.vue'
 import DetailHeader from './components/header.vue'
 import DetailList from './components/list.vue'
+import { getDetailInfo } from 'api/detail.js'
 export default {
   name: 'DetailPage',
   components: {
@@ -17,22 +18,22 @@ export default {
   },
   data () {
     return {
-      detailList: [{
-        title: '成人票',
-        children: [{
-          title: '成人三联票',
-          children: [{
-            title: '成人五人组团票'
-          }]
-        }, {
-          title: '成人儿童联票'
-        }]
-      }, {
-        title: '特惠票'
-      }, {
-        title: '儿童票'
-      }]
+      detailList: [],
+      bannerImg: [],
+      gallaryImgs: [],
+      sightName: ''
     }
+  },
+  mounted () {
+    getDetailInfo(this.$route.params.id)
+      .then(res => {
+        // console.log(res)
+        const data = res.data
+        // console.log(data)
+        this.detailList = data.categoryList
+        this.gallaryImgs = data.gallaryImgs
+        this.sightName = data.sightName
+      })
   }
 }
 </script>

@@ -12,7 +12,7 @@
           </div>
       </div>
   </div>
-  <detail-gallary :imgList='bannerList' v-show="showBanner" @hiddenBanner="sonHidden"></detail-gallary>
+  <detail-gallary :imgList='list' v-show="showBanner" @hiddenBanner="sonHidden"></detail-gallary>
   </div>
 </template>
 
@@ -20,15 +20,21 @@
 import DetailGallary from 'common/gallary/gallary.vue'
 export default {
   name: 'Detail',
-  components: {
-    DetailGallary
+  props: {
+    list: {
+      type: Array,
+      default () {
+        return []
+      }
+    }
   },
   data () {
     return {
-      showBanner: false,
-      bannerList: ['https://img1.qunarzz.com/sight/p0/1410/4d/c5eac3630e9ba35a2909a86a3530e5e1.water.jpg_r_800x800_acf5a0dd.jpg',
-        'https://img1.qunarzz.com/sight/p0/201403/07/8c9a75c5ef11015c56b8072795016b97.jpg_r_800x800_adca95b7.jpg']
+      showBanner: false
     }
+  },
+  components: {
+    DetailGallary
   },
   methods: {
     handleBannerShow () {

@@ -2,7 +2,7 @@
   <div>
     <div class="header" v-show="showHeader" :style='slowShowHeader'>
     <span class="iconfont left-icon" @click="$router.push('/')">&#xe685;</span>
-    景点详情
+    {{name}}
   </div>
   <div class="back-icon" v-show="!showHeader">
       <span class="iconfont pre-icon" @click="$router.push('/')">&#xe685;</span>
@@ -14,6 +14,11 @@
 <script>
 export default {
   name: 'DetailHeader',
+  props: {
+    name: {
+      type: String
+    }
+  },
   data () {
     return {
       showHeader: false,

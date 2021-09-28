@@ -11,7 +11,7 @@ export function request (config) {
   })
   // 响应拦截
   instance.interceptors.response.use(response => {
-    return response.data
+    return response.data ? response.data : response
   })
   return instance(config)
 }
