@@ -12,12 +12,15 @@
           </div>
       </div>
   </div>
-  <detail-gallary :imgList='list' v-show="showBanner" @hiddenBanner="sonHidden"></detail-gallary>
+  <fade-animation>
+    <detail-gallary :imgList='list' v-show="showBanner" @hiddenBanner="sonHidden"></detail-gallary>
+  </fade-animation>
   </div>
 </template>
 
 <script>
 import DetailGallary from 'common/gallary/gallary.vue'
+import FadeAnimation from 'common/animation/gallary-fade.vue'
 export default {
   name: 'Detail',
   props: {
@@ -34,7 +37,7 @@ export default {
     }
   },
   components: {
-    DetailGallary
+    DetailGallary, FadeAnimation
   },
   methods: {
     handleBannerShow () {

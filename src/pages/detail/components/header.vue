@@ -30,7 +30,7 @@ export default {
   },
   methods: {
     scrollContent () {
-      const top = document.documentElement.scrollTop
+      const top = document.documentElement.scrollTop || document.body.scrollTop
       if (top > 40) {
         this.showHeader = true
         this.slowShowHeader.opacity = top / 160 > 1 ? 1 : top / 160
@@ -39,12 +39,12 @@ export default {
       }
     }
   },
-  activated () {
+  mounted () {
     // 监听屏幕的滚动
     window.addEventListener('scroll', this.scrollContent)
   },
   // 解绑全局事件，防止影响其他组件
-  deactivated () {
+  destroyed () {
     window.removeEventListener('scroll', this.scrollContent)
   }
 }
